@@ -1,6 +1,8 @@
 apiVersion: http.keda.sh/v1alpha1
 kind: HTTPScaledObject
 metadata:
+  annotations:
+    httpscaledobject.keda.sh/skip-scaledobject-creation: "true"
   name: hakeda
   namespace: lab
 spec:
