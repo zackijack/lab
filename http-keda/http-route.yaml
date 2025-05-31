@@ -5,9 +5,18 @@ metadata:
   namespace: lab
 spec:
   parentRefs:
-    - name: eg
-      namespace: envoy-gateway-system
+    - group: "gateway.networking.k8s.io"
+      kind: "Gateway"
+      name: "egi"
+      namespace: "envoy-gateway-system"
+      sectionName: https-stg-kt-bs
+    - group: "gateway.networking.k8s.io"
+      kind: "Gateway"
+      name: "eg"
+      namespace: "envoy-gateway-system"
+      sectionName: https-sub-kitabisa-xyz
   hostnames:
+    - hakeda.stg.kt.bs
     - hakeda.kitabisa.xyz
   rules:
     - backendRefs:
