@@ -1,0 +1,22 @@
+apiVersion: http.keda.sh/v1alpha1
+kind: HTTPScaledObject
+metadata:
+  name: hakeda
+  namespace: lab
+spec:
+  hosts:
+  - hakeda.kitabisa.xyz
+  pathPrefixes:
+  - /
+  replicas:
+    min: 0
+    max: 3
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hakeda
+    service: hakeda
+    port: 80
+  scalingMetric:
+    concurrency:
+      targetValue: 100
